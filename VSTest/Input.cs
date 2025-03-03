@@ -11,9 +11,16 @@ namespace VSTest
         public static string GetString(string prompt)
         {
             Console.Write(prompt);
-            string str_res = Console.ReadLine();
-
-            return str_res;
+            string? v = Console.ReadLine();
+            if (v == null)
+            {
+                throw new Exception("Input.GetString(): You cannot have null strings here.");
+            }
+            else
+            {
+                string str_res = v;
+                return str_res;
+            }
         }
 
         public static int GetI32(string prompt)
@@ -35,7 +42,6 @@ namespace VSTest
         {
             Console.Write(prompt);
             float fl_res = float.Parse(Console.ReadLine());
-
             return fl_res;
         }
     }
